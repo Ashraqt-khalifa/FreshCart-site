@@ -4,7 +4,7 @@ import slide3 from "/src/assets/slider-image-3.jpeg";
 import slide4 from "/src/assets/slider-2.jpeg";
 import slide5 from "/src/assets/grocery-banner-2.jpeg";
 
-import style from "./MainSlider.module.css";
+import styles from "./mainSlider.module.css";
 import Slider from "react-slick";
 
 export default function MainSlider() {
