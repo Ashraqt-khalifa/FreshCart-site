@@ -26,8 +26,8 @@ export default function RecentProducts() {
           products.map((product) => (
             <div key={product.id} className="w-1/6">
               <div className="product p-3 my-2">
-                <Link to={`productdetails/${product.id}/${product.category.name}`}>
-                  <img src={product.imageCover} className="w-full" alt="" />
+              <Link to={`/productdetails/${product.id}/${product.category.name}`}>
+              <img src={product.imageCover} className="w-full" alt="" />
                   <h3 className="text-emerald-600">{product.category.name}</h3>
                   <h3 className=" mb-2 font-semibold">
                     {product.title.split(" ").slice(0, 2).join(" ")}

@@ -16,6 +16,7 @@ import CounterContextProvider from "./Context/CounterContext.jsx";
 import UserContextProvider from "./Context/UserContext.jsx";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import ProductDetails from "./components/productDetails.jsx";
+import CategoryProducts from "./components/Categories/CategoryProducts.jsx";
 
 
 
@@ -34,6 +35,9 @@ let x = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
       { path: "*", element: <Notfound /> },
+      { path: "categoryproducts/:id/", element: <ProtectedRoute><CategoryProducts /></ProtectedRoute> },
+
+
     ],
   },
 ]);

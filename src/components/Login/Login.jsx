@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import style from "./Login.module.css";
 import { useFormik } from "formik";
@@ -20,24 +20,25 @@ export default function Login() {
       .post(`https://ecommerce.routemisr.com/api/v1/auth/signin`, values)
       .then((res) => {
         setisLoading(false);
-
         if (res.data.message == "success") {
-
           // localStorage.clear();
           localStorage.setItem("userToken", res.data.token);
           setuserLogin(res.data.token);
           navigate("/");
         }
       })
-
       .catch((res) => {
         setisLoading(false);
-        
-
         // console.log(res.response.data.message);
         setApiError(res.response.data.message);
       });
   }
+
+  useEffect(() => {
+    if (userLogin) {
+      navigate("/");
+    }
+  }, [userLogin, navigate]);
 
   let myValidation = yup.object().shape({
     email: yup.string().email("not valid email").required("email is required"),
@@ -56,16 +57,16 @@ export default function Login() {
   return (
     <>
       {ApiError && (
-        <div className="w-1/4 mx-auto text-white bg-red-300 font-bold rounded-lg p-3">
+        <div className="w-1/4 mx-auto text-white bg-red-300 font-bold rounded-lg p-3  ">
           {ApiError}
         </div>
       )}
 
-      <h2 className="font-bold text-2xl text-center my-4 text-emerald-700">
+      <h2 className="font-bold text-2xl text-center my-4 text-emerald-700 ">
         Hello, Login Here
       </h2>
 
-      <form onSubmit={formik.handleSubmit} className="max-w-md mx-auto">
+      <form onSubmit={formik.handleSubmit} className="max-w-md mx-auto ">
         <div className="relative z-0 w-full mb-5 group">
           <input
             type="email"
@@ -74,7 +75,7 @@ export default function Login() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             id="email"
-            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-emerald-600 peer"
+            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-emerald-600 peer  "
             placeholder=" "
             required
           />

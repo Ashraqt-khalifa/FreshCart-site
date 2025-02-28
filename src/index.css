@@ -82,6 +82,19 @@ a , a:hover{
     transform: translateY(0%);
 
 }
+
+.category .btn {
+    transition: transform 1s , opacity 1s;
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.category:hover .btn {
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+
 .font-sm
 {
     font-size: 14px;
